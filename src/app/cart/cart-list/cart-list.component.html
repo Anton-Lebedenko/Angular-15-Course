@@ -1,0 +1,16 @@
+<div class="cart">
+  <h2 class="cart__header">Cart</h2>
+  <ng-container
+    *ngIf="products.length; else emptyHint">
+    <div *ngFor="let product of products; trackBy: trackByItems" class="cart__item">
+      <p>{{product.category}}</p>
+      <h3>{{product.name}}</h3>
+      <p>{{product.price}}</p>
+    </div>
+  </ng-container>
+</div>
+<ng-template #emptyHint>
+  <div class="empty-hint">
+    Cart is empty
+  </div>
+</ng-template>

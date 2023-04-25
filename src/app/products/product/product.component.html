@@ -1,0 +1,8 @@
+<div class="product">
+  <p>{{product.category}}</p>
+  <h3>{{product.name}}</h3>
+  <p>{{product.description}}</p>
+  <p>{{product.price}}</p>
+  <p>{{product.isAvailable ? 'Available' : 'Not Available'}}</p>
+  <button type="button" (click)="onAddToCart(product)">Buy</button>
+</div>

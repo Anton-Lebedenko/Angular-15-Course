@@ -1,12 +1,18 @@
 <div class="cart">
-  <h2 class="cart__header">Cart</h2>
-  <ng-container
-    *ngIf="products.length; else emptyHint">
-    <div *ngFor="let product of products; trackBy: trackByItems" class="cart__item">
-      <p>{{product.category}}</p>
-      <h3>{{product.name}}</h3>
-      <p>{{product.price}}</p>
-    </div>
+  <div class="cart__header">
+    <h2>Cart</h2>
+    <p class="cart__quantity">{{totalQuantity$ | async}}</p>
+  </div>
+  <ng-container *ngIf="products$ | async as products">
+    <ng-container *ngIf="products.length; else emptyHint">
+      <app-cart-item
+        *ngFor="let product of products; trackBy: trackByItems"
+        [product]=product
+        (deleteProduct)="onDeleteProduct($event)"
+        (quantityIncrease)="onQuantityIncrease($event)"
+        (quantityDecrease)="onQuantityDecrease($event)"></app-cart-item>
+      <p class="cart__cost">Total Cost: {{totalCost$ | async}}</p>
+    </ng-container>
   </ng-container>
 </div>
 <ng-template #emptyHint>

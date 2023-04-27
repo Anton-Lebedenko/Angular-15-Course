@@ -2,21 +2,19 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { CartModule } from './cart';
+import { OrdersModule } from './orders';
+import { ProductsModule } from './products';
 import { SharedModule } from './shared';
-import { ProductComponent } from './products/product/product.component';
-import { ProductListComponent } from './products/product-list/product-list.component';
-import { CartListComponent } from './cart/cart-list/cart-list.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductComponent,
-    ProductListComponent,
-    CartListComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    SharedModule
+    SharedModule,
+    CartModule,
+    ProductsModule,
+    OrdersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

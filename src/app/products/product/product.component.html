@@ -4,5 +4,5 @@
   <p>{{product.description}}</p>
   <p>{{product.price}}</p>
   <p>{{product.isAvailable ? 'Available' : 'Not Available'}}</p>
-  <button type="button" (click)="onAddToCart(product)">Buy</button>
+  <button type="button" (click)="onAddToCart(product.id)" [disabled]="!product.isAvailable">Buy</button>
 </div>

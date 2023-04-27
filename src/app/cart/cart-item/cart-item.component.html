@@ -1,0 +1,17 @@
+<div class="cart-item">
+  <div class="cart-item__content">
+    <div class="cart-item__product">
+      <p>{{product.product.category}}</p>
+      <h3>{{product.product.name}}</h3>
+    </div>
+    <p>{{product.product.price}}</p>
+  </div>
+  <div class="cart-item__controls">
+    <div class="cart-item__quantity-control">
+      <button type="button" (click)="onQuantityDecrease(product.product.id)">-</button>
+      <p>{{product.quantity}}</p>
+      <button type="button" (click)="onQuantityIncrease(product.product.id)">+</button>
+    </div>
+    <button type="button" (click)="onDeleteItem(product.product.id)">Delete</button>
+  </div>
+</div>

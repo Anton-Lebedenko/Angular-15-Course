@@ -3,5 +3,6 @@
   <app-product
     *ngFor="let product of products"
     [product]="product"
+    (purchasingProduct)="onPurchasingProduct($event)"
     class="product-list__item"></app-product>
 </ng-container>

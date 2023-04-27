@@ -1,1 +1,1 @@
-export {ProductModel, Product, Categories} from './product.model'
+export {ProductModel, Product, Categories} from './models/product.model'

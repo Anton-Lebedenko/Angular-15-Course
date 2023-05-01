@@ -5,7 +5,7 @@
   </div>
   <ng-container *ngIf="products$ | async as products">
     <ng-container *ngIf="products.length; else emptyHint">
-      <app-cart-item
+      <app-cart-item appHighLight
         *ngFor="let product of products; trackBy: trackByItems"
         [product]=product
         (deleteProduct)="onDeleteProduct($event)"

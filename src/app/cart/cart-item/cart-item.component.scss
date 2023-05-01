@@ -1,3 +1,13 @@
+:host {
+  margin-top: 10px;
+
+  &.highlight-mouseenter {
+    .cart-item {
+      background-color: azure;
+    }
+  }
+}
+
 .cart-item {
   display: flex;
   align-items: center;
@@ -6,7 +16,7 @@
   border-radius: 10px;
   width: 300px;
   height: 50px;
-  margin-top: 10px;
+  cursor: default;
 
   &__content {
     display: flex;
@@ -21,6 +31,10 @@
   &__controls {
     display: flex;
     align-items: center;
+
+    button {
+      cursor: pointer;
+    }
   }
 
   &__quantity-control {

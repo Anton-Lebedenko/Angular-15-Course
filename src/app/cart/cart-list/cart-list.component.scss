@@ -25,6 +25,10 @@
     align-items: center;
   }
 
+  &__item {
+    margin-top: 10px;
+  }
+
   &__cost {
     padding: 15px;
     text-align: right;
@@ -37,4 +41,8 @@
 .empty-hint {
   text-decoration: underline;
   margin-top: 10px;
+}
+
+.highlight-mouseenter {
+  background-color: azure;
 }

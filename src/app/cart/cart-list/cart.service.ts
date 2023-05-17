@@ -7,12 +7,12 @@ import { CartItemModel, getIndex } from '../shared';
   providedIn: 'root'
 })
 export class CartService {
-  private purchasedProductsSource: BehaviorSubject<CartItemModel[]> = new BehaviorSubject<CartItemModel[]>([]);
+  private cartProducts: BehaviorSubject<CartItemModel[]> = new BehaviorSubject<CartItemModel[]>([]);
 
   constructor() {}
 
   get productsInCart$(): Observable<CartItemModel[]> {
-    return this.purchasedProductsSource.asObservable();
+    return this.cartProducts.asObservable();
   }
 
   get totalCost$(): Observable<number> {
@@ -23,6 +23,10 @@ export class CartService {
 
   get totalQuantity$(): Observable<number> {
     return this.productsInCart$.pipe(map((products: CartItemModel[]) => (products.length)));
+  }
+
+  get isEmptyCart$(): Observable<boolean> {
+    return this.productsInCart$.pipe(map((products: CartItemModel[]) => (products.length === 0)));
   }
 
   addProductToCart(product: ProductModel): void {
@@ -39,6 +43,10 @@ export class CartService {
 
   decreaseQuantity(productId: string): void {
     this.updatePurchasedProducts(this.decreaseQuantityCb.bind(this), productId);
+  }
+
+  removeAllProducts(): void {
+    this.cartProducts.next([]);
   }
 
   private addCartItemCb(purchasedProducts: CartItemModel[], searchingCartItemIndex: number, product: ProductModel): void {
@@ -67,9 +75,9 @@ export class CartService {
   }
 
   private updatePurchasedProducts(cb: Function, productId: string, product?: ProductModel): void {
-    const purchasedProducts: CartItemModel[] = this.purchasedProductsSource.getValue();
+    const purchasedProducts: CartItemModel[] = this.cartProducts.getValue();
     const searchingCartItemIndex: number = getIndex(purchasedProducts, productId);
     cb(purchasedProducts, searchingCartItemIndex, product);
-    this.purchasedProductsSource.next(purchasedProducts);
+    this.cartProducts.next(purchasedProducts);
   }
 }

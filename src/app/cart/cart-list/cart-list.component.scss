@@ -36,6 +36,32 @@
     background-color: bisque;
     margin-top: 15px;
   }
+
+  &__filter {
+    margin: 15px 0;
+  }
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+
+  &__list {
+    margin-right: 15px;
+    width: 120px;
+    height: 30px;
+  }
+
+  &__direction {
+    display: flex;
+    align-items: center;
+
+    input {
+      margin: 0 5px 0 0;
+      height: 15px;
+      width: 15px;
+    }
+  }
 }
 
 .empty-hint {

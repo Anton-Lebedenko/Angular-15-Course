@@ -5,6 +5,15 @@
   </div>
   <ng-container *ngIf="products$ | async as products">
     <ng-container *ngIf="products.length; else emptyHint">
+      <div class="cart__filter filter">
+        <select class="filter__list" [(ngModel)]="selectedSortOption" (change)="onSortOptionChange()">
+          <option *ngFor="let option of sortOptions" [value]="option.value">{{option.label}}</option>
+        </select>
+        <label class="filter__direction">
+          <input type="checkbox" [(ngModel)]="isAscending" (change)="onSortOrderingChange()">
+          Sort by Ascending
+        </label>
+      </div>
       <app-cart-item appHighLight
         class="cart__item"
         *ngFor="let product of products; trackBy: trackByItems"

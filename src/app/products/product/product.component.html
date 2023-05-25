@@ -1,8 +1,8 @@
 <div class="product" appSelectByBorder="#A0A0A0">
-  <p>{{product.category}}</p>
+  <p>{{product.category | titlecase}}</p>
   <h3>{{product.name}}</h3>
   <p>{{product.description}}</p>
   <p>{{product.price}}</p>
   <p>{{product.isAvailable ? 'Available' : 'Not Available'}}</p>
-  <button type="button" (click)="onAddToCart(product.id)" [disabled]="!product.isAvailable">Buy</button>
+  <button type="button" (click)="onAddToCart(product)" [disabled]="!product.isAvailable">Buy</button>
 </div>

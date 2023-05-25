@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CartService } from '../../cart/cart-list/cart.service';
 import { ProductModel } from '../shared';
 import { ProductsService } from './products.service';
@@ -10,7 +11,7 @@ import { ProductsService } from './products.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductListComponent implements OnInit {
-  products!: ProductModel[];
+  products$!: Observable<ProductModel[]>;
 
   constructor(
     private readonly productsService: ProductsService,
@@ -18,11 +19,10 @@ export class ProductListComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    this.products = this.productsService.getProducts();
+    this.products$ = this.productsService.getProducts();
   }
 
-  onPurchasingProduct(productId: string): void {
-    const product: ProductModel | null = this.products.find((product: ProductModel) => product.id === productId) ?? null;
+  onPurchasingProduct(product: ProductModel): void {
     if (product) {
       this.cartService.addProductToCart(product);
     } else {

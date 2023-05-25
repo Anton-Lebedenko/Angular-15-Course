@@ -78,6 +78,6 @@ export class CartService {
     const purchasedProducts: CartItemModel[] = this.cartProducts.getValue();
     const searchingCartItemIndex: number = getIndex(purchasedProducts, productId);
     cb(purchasedProducts, searchingCartItemIndex, product);
-    this.cartProducts.next(purchasedProducts);
+    this.cartProducts.next([...purchasedProducts]);
   }
 }

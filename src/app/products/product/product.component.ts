@@ -11,7 +11,7 @@ export class ProductComponent {
   @Input() product!: ProductModel;
   @Output() purchasingProduct: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
 
-  onAddToCart(product: ProductModel): void {
-    this.purchasingProduct.emit(product);
+  onAddToCart(): void {
+    this.purchasingProduct.emit(this.product);
   }
 }

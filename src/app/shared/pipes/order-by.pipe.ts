@@ -1,5 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+// При желании тоже можно сделать дженерик
+// function getProperty<O extends object, K extends keyof O>(obj: O, property: K[]): O[K] {}
 function getProperty(obj: any, property: string[]): any {
   let prop: any = obj;
   for(let i: number = 0; i < property.length; i++) {

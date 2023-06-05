@@ -22,7 +22,9 @@ export class ConfigOptionsService {
     return this.config;
   }
 
-  setConfigProperty(key: keyof ConfigModel, value: string): void {
+  // как вариант
+  setConfigProperty(key: keyof ConfigModel, value: string): this {
     this.config[key] = value;
+    return this;
   }
 }

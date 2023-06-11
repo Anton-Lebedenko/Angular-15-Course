@@ -13,15 +13,15 @@ export class CartItemComponent {
   @Output() quantityDecrease: EventEmitter<string> = new EventEmitter<string>();
   @Output() quantityIncrease: EventEmitter<string> = new EventEmitter<string>();
 
-  onDeleteItem(productId: string): void {
-    this.deleteProduct.emit(productId);
+  onDeleteItem(): void {
+    this.deleteProduct.emit(this.product.product.id);
   }
 
-  onQuantityDecrease(productId: string) {
-    this.quantityDecrease.emit(productId);
+  onQuantityDecrease() {
+    this.quantityDecrease.emit(this.product.product.id);
   }
 
-  onQuantityIncrease(productId: string) {
-    this.quantityIncrease.emit(productId);
+  onQuantityIncrease() {
+    this.quantityIncrease.emit(this.product.product.id);
   }
 }
